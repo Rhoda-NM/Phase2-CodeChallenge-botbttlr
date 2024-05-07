@@ -1,12 +1,14 @@
 import React from "react";
 import BotCard from "./botCard";
 
-function BotCollection({allbots }) {
+function BotCollection({allbots, enrollBot, dischargeBot }) {
     //console.log(allbots)
     const botsItem = allbots.map((bot) => (
         <BotCard 
             key={bot.id}
             bot={bot}
+            handleBot={enrollBot}
+            dischargeBot={dischargeBot}
         />       
        
     ))

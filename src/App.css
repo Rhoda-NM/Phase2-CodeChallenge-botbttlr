@@ -1,8 +1,4 @@
-.App {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+ .botsPage{
   height: 100vh;
   background-color: #faf9f6;
   text-align: center;
@@ -15,7 +11,7 @@ span i{
   text-wrap: wrap;
 }
 .bot-container{
-  min-height: 50px;
+  min-height: 400px;
   background-color: olivedrab;
 }
 
