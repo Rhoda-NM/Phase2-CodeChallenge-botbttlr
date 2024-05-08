@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
 //import BotSpecs from "./specPage";
+import SortBar from "./SortBar";
 
 function BotsPage() {
   const [bots, setBots] = useState([]);
@@ -16,6 +17,25 @@ function BotsPage() {
       setAvailableBots(data);
     });
   }, [])
+
+
+  function handleClass(e) {
+    if(e.target.id === 'all'){
+      setAvailableBots(bots);
+    }
+    else{
+      const botClass= bots.filter((bot) => bot.bot_class === e.target.id);
+      setAvailableBots(botClass);
+
+    }
+    
+  }
+  function handleCategory(e){
+    const sortBy = e.target.id;
+    const sortedBots = bots.slice().sort((a, b) => b[sortBy] - a[sortBy]);
+    setAvailableBots(sortedBots);
+    //alert(`you are sorting by: ${sortBy}`);
+  }
 
   const addBot = (id) => {
     const newArmy = availableBots.find((bot) => id === bot.id);
@@ -45,8 +65,9 @@ function BotsPage() {
       <div>
           <div className="botsPage">
           <YourBotArmy selectedBots={selection} removeBot={removeBot}dischargeBot={deleteBot}/>
-          
-
+          <div className="sortbar">
+          <SortBar handleClass={handleClass} handleCategory={handleCategory} />
+          </div>
          <BotCollection allbots={availableBots} enrollBot={addBot} dischargeBot={deleteBot} />
           </div>
       </div>
