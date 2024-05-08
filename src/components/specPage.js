@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-function BotSpecs({ bot, enlistBot, goBack }) {
+
+function BotSpecs({ enlistBot, goBack }) {
+    const [bot, setBot] = useState({});
+    const params = useParams();
+    const botId = params.id;
+
+    useEffect(() => {
+        fetch(`http://localhost:3000/bots/${botId}`)
+            .then(res => res.json())
+            .then(data => setBot(data))
+            .catch(error => console.log(error));
+    }, [botId]);
+    
     const { id, name, 
         avatar_url, bot_class, 
         catchphrase, armor, 

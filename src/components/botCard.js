@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../App.css";
 
 function BotCard( { bot, handleBot, dischargeBot }) {
@@ -60,18 +61,7 @@ function BotCard( { bot, handleBot, dischargeBot }) {
                     </div>
                 </div>
                 <div className="extra content">
-                    <span>
-                        <i className="heartbeat icon" />
-                        {health}
-                    </span>
-                    <span>
-                        <i className="lightning icon" />
-                        {damage}
-                    </span>
-                    <span>
-                        <i className="shield alternate icon" />
-                        {armor}
-                    </span>
+                    
                     <span>
                         <div className="ui center alignment segment basic">
                             <button

@@ -40,7 +40,7 @@ function BotsPage() {
   const addBot = (id) => {
     const newArmy = availableBots.find((bot) => id === bot.id);
     const classList = selection.filter((bot) => bot.bot_class === newArmy.bot_class);
-    if(classList.length == 0) {
+    if(classList.length === 0) {
       setSelection([...selection, newArmy]);
       const newBotList = availableBots.filter((bot) => bot.id !== newArmy.id);
       setAvailableBots(newBotList);
