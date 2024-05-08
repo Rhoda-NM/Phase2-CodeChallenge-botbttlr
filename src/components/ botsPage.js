@@ -19,9 +19,16 @@ function BotsPage() {
 
   const addBot = (id) => {
     const newArmy = availableBots.find((bot) => id === bot.id);
-    setSelection([...selection, newArmy]);
-    const newBotList = availableBots.filter((bot) => bot.id !== newArmy.id);
-    setAvailableBots(newBotList);
+    const classList = selection.filter((bot) => bot.bot_class === newArmy.bot_class);
+    if(classList.length == 0) {
+      setSelection([...selection, newArmy]);
+      const newBotList = availableBots.filter((bot) => bot.id !== newArmy.id);
+      setAvailableBots(newBotList);
+    }
+    else {
+      alert(`You can only enroll enroll one bot from ${newArmy.bot_class} class`)
+    }
+    
   }
   const removeBot = (id) => {
     const removedBot = selection.find((bot) => bot.id === id);
